@@ -1,0 +1,73 @@
+services:
+  stocktech-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+      args:
+        - VITE_API_URL=http://stocktech-backend:3000
+        - VITE_AVADMIN_URL=https://avadmin.avelarcompany.com.br
+        - VITE_APP_PORTAL_URL=https://app.avelarcompany.com.br
+        - VITE_SUPABASE_URL=${SUPABASE_PUBLIC_URL}
+        - VITE_SUPABASE_PUBLIC_URL=${SUPABASE_PUBLIC_URL}
+        - VITE_SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+        - VITE_SUPABASE_STORAGE_BUCKET=${SUPABASE_STORAGE_BUCKET}
+    container_name: stocktech-frontend
+    env_file:
+      - ../docker.env
+    environment:
+      - VITE_API_URL=http://stocktech-backend:3000
+      - VITE_AVADMIN_URL=https://avadmin.avelarcompany.com.br
+      - VITE_APP_PORTAL_URL=https://app.avelarcompany.com.br
+      - VITE_SUPABASE_URL=${SUPABASE_PUBLIC_URL}
+      - VITE_SUPABASE_PUBLIC_URL=${SUPABASE_PUBLIC_URL}
+      - VITE_SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - VITE_SUPABASE_STORAGE_BUCKET=${SUPABASE_STORAGE_BUCKET}
+      - NPM_CONFIG_LEGACY_PEER_DEPS=true
+    ports: ["3002:3000"]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    networks:
+      - avelarsys-network
+    depends_on:
+      stocktech-backend:
+        condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  stocktech-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: stocktech-backend
+    env_file:
+      - ../docker.env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - DATABASE_URL=${STOCKTECH_DATABASE_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - NODE_ENV=production
+      - PORT=3000
+      - AVADMIN_API_URL=http://avelarsys-avadmin-backend:8000
+      - OAUTH_SERVER_URL=http://avelarsys-avadmin-backend:8000
+      - SUPABASE_URL=http://host.docker.internal:8001
+    ports: ["3003:3000"]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - avelarsys-network
+
+networks:
+  avelarsys-network:
+    external: true

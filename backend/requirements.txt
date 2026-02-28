@@ -1,0 +1,109 @@
+# ========================================
+# STOCKTECH BACKEND - Python Dependencies
+# ========================================
+
+# ============= CORE FRAMEWORK ============
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# ============= DATABASE =================
+sqlalchemy==2.0.23
+asyncpg==0.29.0          # PostgreSQL async driver
+alembic==1.12.1          # Database migrations
+psycopg2-binary==2.9.9   # PostgreSQL sync driver (backup)
+
+# ============= AUTHENTICATION ============
+python-jose[cryptography]==3.3.0
+python-multipart==0.0.6
+passlib[bcrypt]==1.7.4
+bcrypt==4.1.2
+
+# ============== CACHE & SESSIONS =========
+redis==5.0.1
+aioredis==2.0.1
+
+# ================ HTTP ===================
+httpx==0.25.2            # Async HTTP client
+requests==2.31.0         # Sync HTTP client (backup)
+
+# =============== VALIDATION ==============
+python-cpf==1.0.0        # Validação CPF brasileiro
+python-cnpj==2.0.0       # Validação CNPJ brasileiro
+
+# ================ UTILS ===================
+python-dateutil==2.8.2
+pytz==2023.3
+python-slugify==8.0.1
+uuid-utils==0.8.0
+
+# ================ CORS ===================
+python-cors==1.0.0
+
+# =============== FILE HANDLING ===========
+python-magic==0.4.27     # Detect file types
+pillow==10.1.0            # Image processing + thumbnails
+openpyxl==3.1.2           # Excel import/export
+pandas==2.1.4             # Data processing for imports
+
+# ============== TEMPLATES ================
+jinja2==3.1.2            # Templates para WhatsApp messages
+
+# =============== SEARCH & INDEXING =======
+elasticsearch==8.11.0    # Full-text search (optional)
+whoosh==2.7.4            # Lightweight search alternative
+
+# ============== PRODUCT CATALOG ==========
+barcode==1.0.0            # Generate product barcodes
+qrcode[pil]==7.4.2        # QR codes for products
+
+# =============== MONITORING ==============
+sentry-sdk[fastapi]==1.38.0
+prometheus-fastapi-instrumentator==6.1.0
+
+# =============== LOGGING =================
+structlog==23.2.0
+colorlog==6.8.0
+
+# =============== TESTING =================
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+httpx==0.25.2             # For testing FastAPI
+faker==20.1.0             # Generate fake data
+
+# ============= DEVELOPMENT ===============
+black==23.11.0            # Code formatting
+isort==5.12.0             # Import sorting
+flake8==6.1.0             # Linting
+mypy==1.7.1               # Type checking
+pre-commit==3.6.0         # Git hooks
+
+# ============= DEPLOYMENT ================
+gunicorn==21.2.0          # WSGI server for production
+python-dotenv==1.0.0      # Environment variables
+
+# ============== SECURITY =================
+cryptography==41.0.8
+secrets==1.0              # Built-in, but explicit
+
+# ========== PAYMENT INTEGRATIONS =========
+mercadopago==2.2.0        # Mercado Pago SDK
+stripe==7.8.0             # Stripe SDK (future)
+
+# ========== WHATSAPP INTEGRATION =========
+whatsapp-business-api==1.0.0  # WhatsApp Business API (if available)
+twilio==8.10.3            # Twilio WhatsApp (alternative)
+
+# ============== ASYNC WORKERS ============
+celery==5.3.4             # Task queue
+redis==5.0.1              # Message broker
+
+# =========== IMAGE OPTIMIZATION ==========
+pillow-simd==10.0.1       # Faster image processing (optional)
+webp==0.1.6               # WebP image format
+
+# ============ DATA EXPORT/IMPORT ==========
+xlsxwriter==3.1.9         # Excel export with formatting
+reportlab==4.0.7          # PDF generation for reports

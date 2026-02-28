@@ -1,0 +1,15 @@
+export const ENV = {
+  appId: process.env.VITE_APP_ID ?? "stocktech",
+  cookieSecret: process.env.JWT_SECRET ?? "",
+  databaseUrl: process.env.STOCKTECH_DATABASE_URL || process.env.DATABASE_URL || "",
+  oAuthServerUrl: process.env.OAUTH_SERVER_URL ?? "",
+  ownerOpenId: process.env.OWNER_OPEN_ID ?? "",
+  isProduction: process.env.NODE_ENV === "production",
+  forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
+  forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
+  supabaseUrl: process.env.SUPABASE_URL ?? "",
+  supabasePublicUrl: process.env.SUPABASE_PUBLIC_URL ?? "",
+  supabaseServiceKey: process.env.SUPABASE_SERVICE_KEY ?? "",
+  supabaseStorageBucket: process.env.SUPABASE_STORAGE_BUCKET ?? "",
+  avAdminApiUrl: process.env.AVADMIN_API_URL ?? "http://localhost:8010",
+};

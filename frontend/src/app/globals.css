@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   STOCKTECH - Global Styles
+   ======================================== */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Focus styles */
+@layer base {
+  :focus {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+  }
+}
+
+/* Component styles */
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 focus:bg-primary-700 transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 focus:bg-gray-300 transition-colors;
+  }
+  
+  .btn-success {
+    @apply bg-success-600 text-white px-4 py-2 rounded-lg hover:bg-success-700 focus:bg-success-700 transition-colors;
+  }
+  
+  .btn-whatsapp {
+    @apply bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 focus:bg-green-600 transition-colors flex items-center;
+  }
+  
+  .input-field {
+    @apply block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow border border-gray-200 p-6;
+  }
+  
+  .product-card {
+    @apply bg-white rounded-lg shadow border border-gray-200 p-4 hover:shadow-lg transition-shadow cursor-pointer;
+  }
+  
+  .filter-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors;
+  }
+  
+  .price-tag {
+    @apply text-lg font-bold text-success-600;
+  }
+  
+  .price-original {
+    @apply text-sm text-gray-500 line-through;
+  }
+  
+  .badge-new {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800;
+  }
+  
+  .badge-used {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800;
+  }
+  
+  .badge-featured {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800;
+  }
+
+  /* Classes adicionais usadas no codigo */
+  .document-input {
+    @apply input-field;
+  }
+
+  .stat-card {
+    @apply card;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: .7;
+    }
+  }
+}
+
+/* Brazilian formatting */
+.br-currency::before {
+  content: "R$ ";
+}
+
+/* Loading states */
+.skeleton {
+  @apply animate-pulse bg-gray-200 rounded;
+}
+
+/* Product grid responsive */
+.products-grid {
+  @apply grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .mobile-padding {
+    @apply px-4;
+  }
+  
+  .mobile-text-sm {
+    @apply text-sm;
+  }
+}

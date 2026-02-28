@@ -1,0 +1,71 @@
+services:
+  stocktech-frontend:
+    container_name: stocktech-frontend
+    image: node:20-alpine
+    working_dir: /app
+    env_file:
+      - ../docker.env
+    environment:
+      - NODE_ENV=development
+      - VITE_DEV_SERVER_PORT=3000
+      - VITE_API_URL=http://stocktech-backend:3000
+      - VITE_AVADMIN_URL=https://avadmin.avelarcompany.com.br
+      - VITE_APP_PORTAL_URL=https://app.avelarcompany.com.br
+      - VITE_SUPABASE_URL=${SUPABASE_PUBLIC_URL}
+      - VITE_SUPABASE_PUBLIC_URL=${SUPABASE_PUBLIC_URL}
+      - VITE_SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - VITE_SUPABASE_STORAGE_BUCKET=${SUPABASE_STORAGE_BUCKET}
+      - NPM_CONFIG_LEGACY_PEER_DEPS=true
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/dist
+      - /app/.git
+    command: sh -c "npm install --legacy-peer-deps && npm run dev:client -- --host 0.0.0.0 --port 3000"
+    ports:
+      - "5173:5173"
+      - "3002:3000"
+    networks:
+      - avelarsys-network
+    restart: unless-stopped
+    depends_on:
+      - stocktech-backend
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      disable: true
+
+  stocktech-backend:
+    container_name: stocktech-backend
+    image: node:20-alpine
+    working_dir: /app
+    env_file:
+      - ../docker.env
+    environment:
+      - NODE_ENV=development
+      - LOG_LEVEL=debug
+      - PORT=3000
+      - DATABASE_URL=${STOCKTECH_DATABASE_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - AVADMIN_API_URL=http://avelarsys-avadmin-backend:8000
+      - OAUTH_SERVER_URL=http://avelarsys-avadmin-backend:8000
+      - SUPABASE_URL=http://host.docker.internal:8001
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/dist
+      - /app/.git
+    command: sh -c "npm install --legacy-peer-deps && npm run dev:server"
+    ports:
+      - "3003:3000"
+    networks:
+      - avelarsys-network
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      disable: true
+
+networks:
+  avelarsys-network:
+    external: true
