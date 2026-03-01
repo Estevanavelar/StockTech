@@ -1274,7 +1274,7 @@ export default function Transactions() {
 
   /* ========== MOBILE LAYOUT ========== */
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pb-24">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <style>{`
         @keyframes reasonMarquee {
           0% { transform: translateX(0); }

@@ -428,7 +428,7 @@ export default function Catalog() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center pb-20">
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-600">Carregando produtos...</p>
         </div>
@@ -437,7 +437,7 @@ export default function Catalog() {
   }
 
   /* ============================================
-   *  DESKTOP LAYOUT (>= 1024px)
+   *  DESKTOP LAYOUT (>= 768px, useIsDesktop)
    * ============================================ */
   if (isDesktop) {
     return (
@@ -594,12 +594,12 @@ export default function Catalog() {
   }
 
   /* ============================================
-   *  MOBILE LAYOUT (< 1024px) — INALTERADO
+   *  MOBILE LAYOUT (< 768px, useIsDesktop)
    * ============================================ */
   return (
     <div className="bg-gray-50">
-      {/* Header */}
-      <header className={`bg-white border-b border-gray-200 sticky top-0 z-20 transition-transform duration-300 ${
+      {/* Header - altura fixa (72px) para alinhar com barra de busca sticky */}
+      <header className={`bg-white border-b border-gray-200 sticky top-0 z-20 transition-transform duration-300 shrink-0 min-h-[72px] ${
         headerVisible ? 'translate-y-0' : '-translate-y-full'
       }`}>
         <div className="px-4 py-4">
@@ -703,7 +703,7 @@ export default function Catalog() {
       </header>
 
       <div className={`sticky z-10 bg-white border-b border-gray-200 px-4 py-3 transition-all duration-300 ${
-        headerVisible ? 'top-[80px]' : 'top-0'
+        headerVisible ? 'top-[72px]' : 'top-0'
       }`}>
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">

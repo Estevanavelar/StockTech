@@ -120,7 +120,7 @@ export default function Cart({ isModal }: { isModal?: boolean }) {
   }
 
   return (
-    <div className={`${isModal ? 'h-full flex flex-col' : 'min-h-screen pb-32'} bg-gradient-to-b from-gray-50 to-white`}>
+    <div className={`${isModal ? 'h-full flex flex-col' : 'min-h-screen'} bg-gradient-to-b from-gray-50 to-white`}>
       <header className="bg-white border-b border-gray-100 sticky top-0 z-10">
         <div className="px-4 py-4 flex items-center gap-3">
           {!isModal && (

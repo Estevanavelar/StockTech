@@ -44,24 +44,32 @@ export default function BottomNavigation() {
   const isActive = (path: string) => location === path
 
   return (
-    <nav className={`absolute bottom-[10px] left-4 right-4 bg-white border border-gray-200 shadow-xl z-50 transition-transform duration-300 rounded-2xl ${
-      isVisible ? 'translate-y-0' : 'translate-y-[calc(100%+3rem)]'
-    }`}>
-      <div className="flex justify-start items-center h-16">
-        {navItems.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => setLocation(item.path)}
-            className={`flex-1 flex flex-col items-center justify-center py-3 px-2 transition-colors relative ${
-              isActive(item.path)
-                ? 'text-blue-600 border-t-2 border-blue-600'
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            <span className="text-2xl mb-1">{item.icon}</span>
-            <span className="text-xs font-medium text-center">{item.label}</span>
-          </button>
-        ))}
+    <nav
+      className={`absolute bottom-0 left-0 right-0 z-50 transition-transform duration-300 ${
+        isVisible ? 'translate-y-0' : 'translate-y-full'
+      }`}
+      style={{ paddingBottom: 'max(0.625rem, env(safe-area-inset-bottom, 0px))' }}
+    >
+      <div className="mx-4 mb-2.5 mt-2.5 bg-white border border-gray-200 shadow-xl rounded-2xl overflow-hidden">
+        <div className="flex justify-start items-center h-16">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => setLocation(item.path)}
+              className={`flex-1 flex flex-col items-center justify-center py-3 px-2 transition-colors relative min-h-[44px] ${
+                isActive(item.path)
+                  ? 'text-blue-600'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              <span className="text-2xl mb-1">{item.icon}</span>
+              <span className="text-xs font-medium text-center">{item.label}</span>
+              {isActive(item.path) && (
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-blue-600 rounded-full" />
+              )}
+            </button>
+          ))}
+        </div>
       </div>
     </nav>
   )

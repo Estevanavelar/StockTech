@@ -247,7 +247,7 @@ export default function UserProfile() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pb-20 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Carregando perfil...</p>
@@ -257,7 +257,7 @@ export default function UserProfile() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pb-20">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <header className="bg-white border-b border-gray-100 sticky top-0 z-10">
         <div className="px-4 py-4 flex items-center gap-3">
           <button

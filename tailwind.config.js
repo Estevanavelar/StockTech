@@ -50,6 +50,13 @@ export default {
       fontFamily: {
         sans: ['Sora', 'Poppins', 'system-ui', '-apple-system', 'sans-serif'],
       },
+      spacing: {
+        'safe-top': 'env(safe-area-inset-top, 0px)',
+        'safe-bottom': 'env(safe-area-inset-bottom, 0px)',
+        'safe-left': 'env(safe-area-inset-left, 0px)',
+        'safe-right': 'env(safe-area-inset-right, 0px)',
+        'bottom-nav': 'calc(4rem + 0.625rem + env(safe-area-inset-bottom, 0px))', // h-16 + bottom + safe
+      },
     },
   },
   plugins: [],

@@ -115,9 +115,9 @@ function App() {
                         </div>
                       </div>
                     ) : (
-                      <div className="h-[100dvh] md:h-screen md:bg-zinc-900/70 md:flex md:justify-center md:items-center md:py-[7px]">
+                      <div className="h-[100dvh] md:h-screen md:bg-zinc-900/70 md:flex md:justify-center md:items-center md:py-[7px] pt-safe-area">
                         <div className="flex flex-col w-full h-full md:max-w-[420px] md:h-[calc(100vh-14px)] bg-gray-50 md:rounded-[30px] md:shadow-2xl overflow-hidden relative md:border md:border-white/10 overscroll-none">
-                          <div id="main-scroll-container" className="flex-1 overflow-y-auto no-scrollbar">
+                          <div id="main-scroll-container" className="flex-1 overflow-y-auto no-scrollbar pb-mobile-nav">
                             <Router />
                           </div>
                           <BottomNavigation />

@@ -109,7 +109,7 @@ export default function AddressManagement() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pb-24">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Header */}
       <header className="bg-white border-b border-gray-100 sticky top-0 z-10">
         <div className="px-4 py-4 flex items-center gap-3">

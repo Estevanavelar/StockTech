@@ -281,4 +281,16 @@
   .animate-marquee {
     animation: marquee 10s linear infinite;
   }
+
+  /* Padding para conteúdo mobile (evita sobreposição com BottomNavigation + safe area) */
+  .pb-mobile-nav {
+    padding-bottom: calc(4rem + 0.625rem + env(safe-area-inset-bottom, 0px));
+  }
+  .pb-mobile-nav-lg {
+    padding-bottom: calc(6rem + 0.625rem + env(safe-area-inset-bottom, 0px));
+  }
+  /* Safe area top para notch (iOS) */
+  .pt-safe-area {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
 }

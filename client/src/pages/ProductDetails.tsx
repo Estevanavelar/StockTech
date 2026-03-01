@@ -356,7 +356,7 @@ export default function ProductDetails() {
   const availableStock = product.quantity || 0
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pb-24">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <header className={`bg-white border-b border-gray-100 sticky top-0 z-20 transition-transform duration-300 ${
         headerVisible ? 'translate-y-0' : '-translate-y-full'
       }`}>
